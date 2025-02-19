@@ -1,5 +1,5 @@
 import numpy as np
-from PIL import  Image
+from PIL import  Image, ImageOps
 img_mat = np.zeros((200, 200,3), dtype=np.uint8)
 img_mat[0:200,0:200, 0] = 255
 img_mat[0:200,0:200, 1] = 0
@@ -46,8 +46,8 @@ def bresanham(image, x0, y0, x1, y1, color):
         y0, y1 = y1, y0
 
     y = y0
-    dy = abs(y1-y0)/x1-x0
-    derror = 0.0
+    dy = abs(y1-y0)*2
+    derror = 0.0 #Смещение по у
     y_update = 1 if y1 > y0 else -1
 
     for x in np.arange(x0, x1):
