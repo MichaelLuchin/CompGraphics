@@ -22,16 +22,20 @@ for line in f:
 
 img_mat2 = np.zeros(shape=(2000, 2000, 3), dtype=np.uint8)
 
+color = (255,255,255)
 for i in range(0,len(vectorf)):
+    if (i % 500) == 0:
+        color = ((25*i)%255, (50*i)%255, (100*i)%255)
+
     x0 = int((vectorv[vectorf[i][0]-1][0])*10000 + 1000)
     y0 = int((vectorv[vectorf[i][0]-1][1])*10000 + 500)
     x1 = int((vectorv[vectorf[i][1]-1][0])*10000 + 1000)
     y1 = int((vectorv[vectorf[i][1]-1][1])*10000 + 500)
     x2 = int((vectorv[vectorf[i][2]-1][0])*10000 + 1000)
     y2 = int((vectorv[vectorf[i][2]-1][1])*10000 + 500)
-    gc.bresanham(img_mat2, x0, y0, x1, y1, (255, 255, 255))
-    gc.bresanham(img_mat2, x1, y1, x2, y2, (255, 255, 255))
-    gc.bresanham(img_mat2, x0, y0, x2, y2, (255, 255, 255))
+    gc.bresanham(img_mat2, x0, y0, x1, y1, color)
+    gc.bresanham(img_mat2, x1, y1, x2, y2, color)
+    gc.bresanham(img_mat2, x0, y0, x2, y2, color)
 
 
 

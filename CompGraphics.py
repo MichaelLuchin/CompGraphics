@@ -66,7 +66,7 @@ for i in range (13):
     y0 = 100
     x1 = round(100 + 95* np.cos(i*2*np.pi/13))
     y1 = round(100 + 95* np.sin(i*2*np.pi/13))
-    x_loop_line(img_mat, x0, y0, x1, y1, (255, 255, 255))
+    bresanham(img_mat, x0, y0, x1, y1, (255, 255, 255))
 
 img = Image.fromarray(img_mat, mode="RGB")
 img.save("img.jpg")
