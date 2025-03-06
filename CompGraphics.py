@@ -61,12 +61,12 @@ def bresanham(image, x0, y0, x1, y1, color):
             derror -= 2 * (x1 - x0)
             y += y_update
 
-for i in range (13):
-    x0 = 100
-    y0 = 100
-    x1 = round(100 + 95* np.cos(i*2*np.pi/13))
-    y1 = round(100 + 95* np.sin(i*2*np.pi/13))
-    bresanham(img_mat, x0, y0, x1, y1, (255, 255, 255))
-
-img = Image.fromarray(img_mat, mode="RGB")
-img.save("img.jpg")
+# for i in range (13):
+#     x0 = 100
+#     y0 = 100
+#     x1 = round(100 + 95* np.cos(i*2*np.pi/13))
+#     y1 = round(100 + 95* np.sin(i*2*np.pi/13))
+#     bresanham(img_mat, x0, y0, x1, y1, (255, 255, 255))
+#
+# img = Image.fromarray(img_mat, mode="RGB")
+# img.save("img.jpg")
