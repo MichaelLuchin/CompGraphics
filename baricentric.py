@@ -1,8 +1,5 @@
 import math
 
-from PIL import  Image, ImageOps
-import CompGraphics as gc
-
 def bari(x0, y0, x1, y1, x2, y2, x, y):
     lambda0 = ((x - x2) * (y1 - y2) - (x1 - x2) * (y - y2)) / ((x0 - x2) * (y1 - y2) - (x1 - x2) * (y0 - y2))
     lambda1 = ((x0 - x2) * (y - y2) - (x - x2) * (y0 - y2)) / ((x0 - x2) * (y1 - y2) - (x1 - x2) * (y0 - y2))
