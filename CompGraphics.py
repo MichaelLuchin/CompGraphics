@@ -1,9 +1,4 @@
 import numpy as np
-from PIL import  Image, ImageOps
-img_mat = np.zeros((200, 200,3), dtype=np.uint8)
-img_mat[0:200,0:200, 0] = 255
-img_mat[0:200,0:200, 1] = 0
-img_mat[0:200,0:200, 2] = 255
 
 def dotted_line(image, x0, y0, x1, y1, color):
     count = np.sqrt((x1-x0)**2 + (y1-y0)**2)
@@ -60,13 +55,3 @@ def bresanham(image, x0, y0, x1, y1, color):
         if (derror > (x1 - x0)):
             derror -= 2 * (x1 - x0)
             y += y_update
-
-# for i in range (13):
-#     x0 = 100
-#     y0 = 100
-#     x1 = round(100 + 95* np.cos(i*2*np.pi/13))
-#     y1 = round(100 + 95* np.sin(i*2*np.pi/13))
-#     bresanham(img_mat, x0, y0, x1, y1, (255, 255, 255))
-#
-# img = Image.fromarray(img_mat, mode="RGB")
-# img.save("img.jpg")
