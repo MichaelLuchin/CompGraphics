@@ -33,3 +33,25 @@ def resize(vectorv, tx=0, ty=0, tz=0, alpha=np.radians(0), beta=np.radians(0), g
     for i in vectorv:
         i[0],i[1],i[2] = np.dot(model_rotation(alpha,beta,gamma),[i[0], i[1], i[2]]) + [tx,ty,tz]
     return vectorv
+
+def get_point_normals(vectorv, vectorf, normalsArr):
+    for i in range(0, len(vectorf)):
+        x0 = (vectorv[vectorf[i][0] - 1][0])
+        y0 = (vectorv[vectorf[i][0] - 1][1])
+        z0 = (vectorv[vectorf[i][0] - 1][2])
+        x1 = (vectorv[vectorf[i][1] - 1][0])
+        y1 = (vectorv[vectorf[i][1] - 1][1])
+        z1 = (vectorv[vectorf[i][1] - 1][2])
+        x2 = (vectorv[vectorf[i][2] - 1][0])
+        y2 = (vectorv[vectorf[i][2] - 1][1])
+        z2 = (vectorv[vectorf[i][2] - 1][2])
+
+        norm = normal(x0, y0, z0, x1, y1, z1, x2, y2, z2)
+        norm /= np.linalg.norm(norm)
+        normalsArr[vectorf[i][0] - 1] += norm
+        normalsArr[vectorf[i][1] - 1] += norm
+        normalsArr[vectorf[i][2] - 1] += norm
+    for i in range(0, len(normalsArr)):
+        normalsArr[i] = normalsArr[i]/np.linalg.norm(normalsArr[i])
+
+    return normalsArr

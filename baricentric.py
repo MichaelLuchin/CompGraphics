@@ -10,11 +10,15 @@ def bari(x0, y0, x1, y1, x2, y2, x, y):
     lambda2 = 1.0 - lambda0 - lambda1
     return lambda0, lambda1, lambda2
 
-def draw_tr(x0, y0, z0, x1, y1, z1, x2, y2, z2, img_mat, z_buff, color):
+def draw_tr(img_mat, z_buff, color, texture_coords, texture_nums, texture, x0, y0, z0, x1, y1, z1, x2, y2, z2,  i0, i1, i2):
     a = 10000 * coef
     px0, py0 = a * x0 / z0 + widh / 2, a * y0 / z0 + high / 2
     px1, py1 = a * x1 / z1 + widh / 2, a * y1 / z1 + high / 2
     px2, py2 = a * x2 / z2 + widh / 2, a * y2 / z2 + high / 2
+
+    I0 = i0[2]
+    I1 = i1[2]
+    I2 = i2[2]
 
     xmin = min(px0, px1, px2)
     xmax = max(px0, px1, px2)
@@ -38,5 +42,7 @@ def draw_tr(x0, y0, z0, x1, y1, z1, x2, y2, z2, img_mat, z_buff, color):
                 if z_cord > z_buff[y][x]:
                     continue
                 else:
+                    color = l0*I0+l1*I1+l2*I2
+                    color *=-255
                     img_mat[y][x] = color
                     z_buff[y][x] = z_cord
