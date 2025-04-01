@@ -27,17 +27,18 @@ vectorv = norm.resize(vectorv,0,-0.05,1*bc.coef,np.radians(0),np.radians(-90),np
 
 for i in range(0,len(vectorf)):
 
-    x0 = ((vectorv[vectorf[i][0]-1][0]))
-    y0 = ((vectorv[vectorf[i][0]-1][1]))
-    z0 = ((vectorv[vectorf[i][0]-1][2]))
-    x1 = ((vectorv[vectorf[i][1]-1][0]))
-    y1 = ((vectorv[vectorf[i][1]-1][1]))
-    z1 = ((vectorv[vectorf[i][1]-1][2]))
-    x2 = ((vectorv[vectorf[i][2]-1][0]))
-    y2 = ((vectorv[vectorf[i][2]-1][1]))
-    z2 = ((vectorv[vectorf[i][2]-1][2]))
+    x0 = (vectorv[vectorf[i][0]-1][0])
+    y0 = (vectorv[vectorf[i][0]-1][1])
+    z0 = (vectorv[vectorf[i][0]-1][2])
+    x1 = (vectorv[vectorf[i][1]-1][0])
+    y1 = (vectorv[vectorf[i][1]-1][1])
+    z1 = (vectorv[vectorf[i][1]-1][2])
+    x2 = (vectorv[vectorf[i][2]-1][0])
+    y2 = (vectorv[vectorf[i][2]-1][1])
+    z2 = (vectorv[vectorf[i][2]-1][2])
 
-    color = (200 * norm.cut_nofacial(x0, y0, z0, x1, y1, z1, x2, y2, z2),100,200)
+    light = norm.cut_nofacial(x0, y0, z0, x1, y1, z1, x2, y2, z2)
+    color = (-255 * light,-255*light,-255*light)
     if (norm.cut_nofacial(x0, y0, z0, x1, y1, z1, x2, y2, z2) < 0):
         bc.draw_tr(x0, y0, z0, x1, y1, z0, x2, y2, z0, img_mat2, z_buff_mat, color)
 

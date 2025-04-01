@@ -2,7 +2,7 @@ import math
 
 widh = 2400
 high = 1350
-coef=0.17
+coef = 0.17
 
 def bari(x0, y0, x1, y1, x2, y2, x, y):
     lambda0 = ((x - x2) * (y1 - y2) - (x1 - x2) * (y - y2)) / ((x0 - x2) * (y1 - y2) - (x1 - x2) * (y0 - y2))
