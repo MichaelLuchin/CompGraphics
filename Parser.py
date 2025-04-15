@@ -6,7 +6,7 @@ import normals as norm
 #Моделька
 f = open("model_1.obj")
 
-texture = np.array(open("bunny-atlas.jpg"))
+texture = np.array(ImageOps.flip(Image.open("bunny-atlas.jpg")))
 
 vectorv = []
 vectorf = []
@@ -33,7 +33,7 @@ for line in f:
 
 img_mat2 = np.zeros(shape=(bc.high, bc.widh, 3), dtype=np.uint8)
 z_buff_mat = np.full((bc.high, bc.widh), np.inf, dtype=np.float64)
-vectorv = norm.resize(vectorv,0,-0.05,1*bc.coef,np.radians(0),np.radians(-90),np.radians(0))
+vectorv = norm.resize(vectorv,0,-0.05,1*bc.coef,np.radians(0),np.radians(0),np.radians(0))
 normalsArr = np.zeros((len(vectorv), 3))
 normalsArr = norm.get_point_normals(vectorv, vectorf, normalsArr)
 
@@ -48,10 +48,12 @@ for i in range(0,len(vectorf)):
     y2 = (vectorv[vectorf[i][2]-1][1])
     z2 = (vectorv[vectorf[i][2]-1][2])
 
+    polygon_texture_nums = texture_nums[i]
+
     light = norm.cut_nofacial(x0, y0, z0, x1, y1, z1, x2, y2, z2)
     color = (-255 * light,-255*light,-255*light)
     if (norm.cut_nofacial(x0, y0, z0, x1, y1, z1, x2, y2, z2) < 0):
-        bc.draw_tr(img_mat2, z_buff_mat, color, texture_coords,texture_nums, texture, x0, y0, z0, x1, y1, z1, x2, y2, z2, normalsArr[vectorf[i][0]-1], normalsArr[vectorf[i][1]-1], normalsArr[vectorf[i][2]-1])
+        bc.draw_tr(img_mat2, z_buff_mat, color, polygon_texture_nums, texture_coords, texture, x0, y0, z0, x1, y1, z1, x2, y2, z2, normalsArr[vectorf[i][0] - 1], normalsArr[vectorf[i][1] - 1], normalsArr[vectorf[i][2] - 1])
 
 
 img = Image.fromarray(img_mat2, mode="RGB")
