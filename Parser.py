@@ -19,7 +19,7 @@ if IMGTexture_exist:
 
 img_mat2 = np.zeros(shape=(bc.high, bc.widh, 3), dtype=np.uint8)
 z_buff_mat = np.full((bc.high, bc.widh), np.inf, dtype=np.float64)
-for times in range (2):
+for times in range (5):
     model = open("12268_banjofrog_v1_L3.obj")
     vectorv = []
     vectorf = []
@@ -49,7 +49,7 @@ for times in range (2):
     #vectorv = norm.resize(vectorv,5 - 10*times, -0.1, 100*bc.coef,np.radians(150),np.radians(0),np.radians(210))
     vectorv = quat.transform_mesh(
         vectorv,
-        translation=(-5 + 10*times, 0, 30),
+        translation=(15 - 5*times, 0, 30-times),
         euler_angles=(np.radians(90), np.radians(100), np.radians(150)),
         scale=1
     )
