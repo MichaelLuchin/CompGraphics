@@ -79,4 +79,4 @@ for times in range (5):
 
 img = Image.fromarray(img_mat2, mode="RGB")
 img = ImageOps.flip(img)
-img.save("img.jpg")
+img.save("pic.jpg")
